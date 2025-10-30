@@ -1,0 +1,9 @@
+How to set up 7-Segment LED Display
+required materials - 13 wires (more if needed) - arduino 2560 mega - laptop - 7-Segment LED Display
+create two 5x1 rows of wire input for the LED Display Note:(Place them on each end of the tall sides)
+connect wires in the 0 through 13 input section of the arduino kit execpt for the middles 
+place a resistor away from the display
+connect the bottom middle wire to the top part of the resistor
+connect the top middle wire above the previously placed wire
+place and connect a wire on the bottom of the resistor and to the ground input.
+verify and run code on arduino (see digitcode file for code)
