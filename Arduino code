@@ -1,0 +1,92 @@
+// === 7-Segment Pins ===
+int a = 2, b = 3, c = 4, d = 5, e = 6, f = 7, g = 8;
+
+void clearDisplay() {
+  digitalWrite(a, LOW);
+  digitalWrite(b, LOW);
+  digitalWrite(c, LOW);
+  digitalWrite(d, LOW);
+  digitalWrite(e, LOW);
+  digitalWrite(f, LOW);
+  digitalWrite(g, LOW);
+}
+
+void displayChar(char ch) {
+  clearDisplay();
+
+  switch (ch) {
+
+    case 'C':   // C
+      digitalWrite(d, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      break;
+
+    case 'D':   // d
+      digitalWrite(b, HIGH);
+      digitalWrite(c, HIGH);
+      digitalWrite(d, HIGH);
+      digitalWrite(e, HIGH);
+      break;
+
+    case 'E':   // E
+      digitalWrite(a, HIGH);
+      digitalWrite(d, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      digitalWrite(g, HIGH);
+      break;
+
+    case 'F':   // F
+      digitalWrite(a, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      digitalWrite(g, HIGH);
+      break;
+
+    case 'G':   // Show as "6"
+      digitalWrite(a, HIGH);
+      digitalWrite(c, HIGH);
+      digitalWrite(d, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      digitalWrite(g, HIGH);
+      break;
+
+    case 'A':   // A
+      digitalWrite(a, HIGH);
+      digitalWrite(b, HIGH);
+      digitalWrite(c, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      digitalWrite(g, HIGH);
+      break;
+
+    case 'B':   // b
+      digitalWrite(c, HIGH);
+      digitalWrite(d, HIGH);
+      digitalWrite(e, HIGH);
+      digitalWrite(f, HIGH);
+      digitalWrite(g, HIGH);
+      break;
+
+    default:    // Unknown → "-"
+      digitalWrite(g, HIGH);
+      break;
+  }
+}
+
+void setup() {
+  pinMode(a, OUTPUT); pinMode(b, OUTPUT); pinMode(c, OUTPUT);
+  pinMode(d, OUTPUT); pinMode(e, OUTPUT); pinMode(f, OUTPUT); pinMode(g, OUTPUT);
+  clearDisplay();
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()) {
+    char key = Serial.read();
+    displayChar(key);
+  }
+}
